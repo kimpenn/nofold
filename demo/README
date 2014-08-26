@@ -1,0 +1,22 @@
+This is a small dataset that can be used to test NoFold.
+
+Input files:
+    demo1.db: 10 tRNA, 10 U5, and 10 random sequences
+    demobg.db: 500 random sequences that can be used to test the enrichment calculation
+    
+
+==============================
+ Quick run:
+==============================
+
+Run the following commands from within the /src/ directory, replacing --cpus=<CPU> in both commands with the number of CPUs you would like to use.
+
+1. Score and normalize sequences:
+python score_and_normalize.py ../demo/demo1/demo1.db --cpus=<CPU>
+
+2. Cluster:
+python nofold_pipeline.py ../demo/demo1/demo1.zNorm.pcNorm100.zNorm.bitscore ../demo/demo1/demo1.db --cpus=<CPU> --bounds-file=../thresh/bounds_30seq.txt --verbose
+
+
+Output:
+The most interesting output file is "demo1.clusters_s3rSpec_top.txt_expanded_merged_bs11.50bgNoneGloc.txt.details". This file contains annotations of the clusters that were found by NoFold. You should find that a cluster is reported for each tRNA and U5, but no cluster is reported for the random sequences. 
