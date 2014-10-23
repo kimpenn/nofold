@@ -2,9 +2,6 @@
  About
 ==============================
 
-NoFold v.1.0.1
-Last update: Feb 25, 2014
-
 NoFold is an approach for characterizing and clustering RNA secondary structures 
 without computational folding or alignment. It works by mapping each RNA sequence 
 of interest to a structural feature space, where each coordinate within the space 
@@ -29,7 +26,7 @@ Questions: contact sarahmid@mail.med.upenn.edu.
 ==============================
 
 - Python 2.X
-- Infernal (v.1.0.2)
+- Infernal (v.1.0.2) (*NOT the newest version, which doesn't contain cmscore)
 - R with fastcluster package 
 - LocARNA 
 
@@ -282,36 +279,46 @@ the same structure, those sequence's IDs will be listed under "Members":
     
     Input files:
         - the normalized bitscore file output from score_and_normalize.py 
-		        (*.zNorm.pcNorm100.zNorm.bitscore)
+		    (*.zNorm.pcNorm100.zNorm.bitscore)
         - the original fasta file used for scoring
         - a file with appropriate thresholds (i.e. bounds_#seq.txt, where # is 
-		        roughly the number of query sequences). Note: you must specify 
-				either this file (recommended), or a sigle pair of thresholds 
-				as --bounds=THRESH1,THRESH2
+		    roughly the number of query sequences). Note: you must specify 
+			either this file (recommended), or a sigle pair of thresholds 
+			as --bounds=THRESH1,THRESH2
     
     Output files:
         -Intermediate output:
-            - *.hierarchical.distMatrix - distance matrix between all query sequences
-            - *.hierarchical.heights - join heights of dendrogram
-            - *.hierarchical.clusters - list of all possible clusters from dendrogram
-            - *.clusters_s3rSpec_top.txt - list of clusters that passed initial thresholds
-            - *.clusters_s3rSpec_all.txt - list of all clusters
-            - *.clusters_s3rSpec_top.txt.details - annotation of clusters that passed thresh
-            - *.clusters_s3rSpec_top.txt.summary - summary stats of clusters that passed thresholds
-            - *.clusters_s3rSpec_top.txt_expanded_bs##bgNoneGloc.txt - summary of clusters 
-			        after expansion (## = bitscore threshold used for expansion)
-            - *.clusters_s3rSpec_top.txt_expanded_merged_bs##bgNoneGloc.txt - summary of clusters 
-			        after merging expanded clusters (## = bitscore threshold used for expansion)
+            - *.hierarchical.distMatrix - 
+			    distance matrix between all query sequences
+            - *.hierarchical.heights - 
+			    join heights of dendrogram
+            - *.hierarchical.clusters - 
+			    list of all possible clusters from dendrogram
+            - *.clusters_s3rSpec_top.txt - 
+			    list of clusters that passed initial thresholds
+            - *.clusters_s3rSpec_all.txt - 
+			    list of all clusters
+            - *.clusters_s3rSpec_top.txt.details - 
+			    annotation of clusters that passed thresh
+            - *.clusters_s3rSpec_top.txt.summary - 
+			    summary stats of clusters that passed thresholds
+            - *.clusters_s3rSpec_top.txt_expanded_bs##bgNoneGloc.txt - 
+			    summary of clusters after expansion 
+				(## = bitscore threshold used for expansion)
+            - *.clusters_s3rSpec_top.txt_expanded_merged_bs##bgNoneGloc.txt - 
+			    summary of clusters after merging expanded clusters 
+				(## = bitscore threshold used for expansion)
         -Main output:
             => *.clusters_s3rSpec_top.txt_expanded_merged_bs##bgNoneGloc.txt.details - 
-			        MAIN CLUSTER ANNOTATION FILE - detailed annotation of each final 
-					cluster (## = bitscore threshold used for expansion)
+			    MAIN CLUSTER ANNOTATION FILE - detailed annotation of each final 
+				cluster (## = bitscore threshold used for expansion)
             => *.clusters_s3rSpec_top.txt_expanded_merged_bs##bgNoneGloc.txt.summary - 
-			        MAIN CLUSTER ANNOTATION FILE - summary stats for each final cluster 
-					(## = bitscore threshold used for expansion)
+			    MAIN CLUSTER ANNOTATION FILE - summary stats for each final cluster 
+				(## = bitscore threshold used for expansion)
             => folder /*_clust_cms/ - cluster-CMs, a CM generated for each 
-			        threshold-passing cluster
-            => folder /*_structs/ - predicted structures of each threshold-passing cluster
+			    threshold-passing cluster
+            => folder /*_structs/ - predicted structures of each threshold-passing 
+			    cluster
 
     Usage:
         python nofold_pipeline.py BITSCORE_FILE FASTA_FILE --bounds-file=THRESHOLD_FILE [options]
@@ -414,7 +421,8 @@ the same structure, those sequence's IDs will be listed under "Members":
           bgDinucWT_50.zNorm.pcNorm100.zNorm.bitscore)
     
     Output files:
-        => bounds_#seq.txt - calculated thresholds for each size cluster, used for clustering
+        => bounds_#seq.txt - calculated thresholds for each size cluster, used 
+           for clustering
     
     Usage:
         python caclulate_clust_thresh.py <SIZE>
@@ -425,7 +433,7 @@ the same structure, those sequence's IDs will be listed under "Members":
  Reference
 ==============================
 
-SA Middleton and J Kim. 2014. NoFold: RNA structure clustering without folding or alignment.
+Middleton, SA and Kim, J. 2014. NoFold: RNA structure clustering without folding or alignment. RNA 20:1671-1683
 
 
 
