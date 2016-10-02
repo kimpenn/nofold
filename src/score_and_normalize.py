@@ -15,6 +15,7 @@
 #    python score_and_normalize.py ../demo/demo1/demo1.db --cpus=4 --infernal-path=../../../TOOLS/Infernal-1.0.2/infernal-1.0.2/src/
 #====================================================================
 import subprocess, sys, os, time, glob
+import utils_file_readers as ufr
 from multiprocessing import Pool, cpu_count
 from optparse import OptionParser
 
@@ -108,6 +109,14 @@ if __name__ == '__main__':
 		print ">> Exiting."
 		sys.exit()
 		
+	# check number of sequences
+	(seqs, error) = ufr.read_fasta(DB_FILE)
+	if error:
+		print ">> Error: could not read fasta file. Check that it is in the correct format (see README)."
+		print ">> Exiting."
+		sys.exit()
+	numSeqs = len(seqs.keys())
+		
 	print ""
 	print "Files/paths to be used:\n"
 	print "    output directory:", workingDir
@@ -164,15 +173,9 @@ if __name__ == '__main__':
 	cpuHrs = (float(totalTime) / 60) / 60
 	elapsedHrs = (float(elapsedTime) / 60) / 60
 	
-	# check number of sequences
-	command = "wc -l %s" % DB_FILE
-	result = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
-	lines = result.stdout.readlines()
-	(numLines, rest) = lines[0].split(None, 2)
-	retval = result.wait()
 	
 	print ""
-	print "Finished scoring %s sequences on %s CMs in %.2fs / %.4fhr on %s core(s) (%.4fcpu-s / %.4fcpu-hrs, or ~ %.2fs/cm)" % (int(float(numLines)/2), count, elapsedTime, elapsedHrs, NUM_PROCESSES, totalTime, cpuHrs, avgTime)
+	print "Finished scoring %s sequences on %s CMs in %.2fs / %.4fhr on %s core(s) (%.4fcpu-s / %.4fcpu-hrs, or ~ %.2fs/cm)" % (numSeqs, count, elapsedTime, elapsedHrs, NUM_PROCESSES, totalTime, cpuHrs, avgTime)
 	print "Output printed in", scoresOut
 	
 	# print bitscore file (table of scores, rows=seqs, cols=CMs)
@@ -184,6 +187,8 @@ if __name__ == '__main__':
 	for line in result.stdout.readlines():
 		print "   ", line
 	retval = result.wait()
+	if retval != 0:
+		sys.exit()
 	
 	
 	# normalize bitscore file
@@ -195,6 +200,8 @@ if __name__ == '__main__':
 	for line in result.stdout.readlines():
 		print line,
 	retval = result.wait()
+	if retval != 0:
+		sys.exit()
 	
 	print ""
 	print "======================================================"
