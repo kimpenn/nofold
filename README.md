@@ -1,5 +1,5 @@
 # NoFold: A motif finder for RNA secondary structures
----
+
 
 NoFold is an approach for characterizing and clustering RNA secondary structures without computational folding or alignment. It works by mapping each RNA sequence of interest to a structural feature space, where each coordinate within the space corresponds to the probabilistic similarity of the sequence to an empirically defined structure model (e.g. Rfam family covariance models). NoFold provides scripts for mapping sequences to this structure space, extracting any robust clusters that are formed, and annotating those clusters with structural and functional information.
 
@@ -29,8 +29,9 @@ We recommend also installing [RNAz](http://www.tbi.univie.ac.at/~wash/RNAz/) for
 
 
 <br>
-# Installation
 ---
+# Installation
+
 
 1. Install required external software (see above)
 2. Unzip the tar file: tar -zxvf nofold.tar.gz
@@ -40,8 +41,9 @@ We recommend also installing [RNAz](http://www.tbi.univie.ac.at/~wash/RNAz/) for
 
 
 <br>
-# Quick-start example with demo datatset
 ---
+# Quick-start example with demo datatset
+
 
 Run the following from within the `/src/` directory. You may need to change the number of CPUs used, or provide the paths to your Infernal/LocARNA installations. See "Script Details" for more information.
 
@@ -62,8 +64,9 @@ The second script outputs a detailed annotation file of the identified clusters:
 
 
 <br>
-# General usage guide
 ---
+# General usage guide
+
 
 
 ## 1\. (Prep) Create FASTA-format input file.
@@ -171,8 +174,9 @@ This causes an additional file to be printed that contains the enrichment p-valu
 
 
 <br>
-# Script details
 ---
+# Script details
+
 
 
 > ### `score_and_normalize.py`
@@ -360,8 +364,9 @@ This causes an additional file to be printed that contains the enrichment p-valu
 
 
 <br>
-# Reference
 ---
+# Reference
+
 
 Middleton, SA and Kim, J. 2014. NoFold: RNA structure clustering without folding or alignment. RNA 20:1671-1683. 
 [online](http://rnajournal.cshlp.org/content/20/11/1671.long)
