@@ -10,7 +10,6 @@ Questions: contact sarahmid@mail.med.upenn.edu.
 
 <br>
 # Download
----
 
 **This repo contains the following:**
 - All code needed to run NoFold (scoring, clustering, annotation)
@@ -29,7 +28,6 @@ We recommend also installing [RNAz](http://www.tbi.univie.ac.at/~wash/RNAz/) for
 
 
 <br>
----
 # Installation
 
 
@@ -41,7 +39,6 @@ We recommend also installing [RNAz](http://www.tbi.univie.ac.at/~wash/RNAz/) for
 
 
 <br>
----
 # Quick-start example with demo datatset
 
 
@@ -64,7 +61,6 @@ The second script outputs a detailed annotation file of the identified clusters:
 
 
 <br>
----
 # General usage guide
 
 
@@ -174,7 +170,6 @@ This causes an additional file to be printed that contains the enrichment p-valu
 
 
 <br>
----
 # Script details
 
 
@@ -364,7 +359,6 @@ This causes an additional file to be printed that contains the enrichment p-valu
 
 
 <br>
----
 # Reference
 
 
